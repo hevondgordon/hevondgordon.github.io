@@ -2,6 +2,8 @@
 <html>
 <head>
 	<title>Hevon Gordon</title>
+	<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="bower_components/materialize/dist/css/materialize.css">
 	<link rel="stylesheet" href="css/normalize.min.css">
 	<link rel="stylesheet" href="css/animate.min.css">
@@ -10,8 +12,21 @@
 
 
 <div class="first-master row">
-	<div class="col l6 m6 s6 left">left</div>
-	<div class="col l6 m6 s6 right">right</div>
+
+	<div class="col l5 m12 s12 left z-depth-1-half">
+	<center><div class="title">Hevon Gordon</div></center>
+	</div>
+
+
+
+
+	<div class="col l7 m12 s12 right ">
+		<div class='body z-depth-1-half'>body</div>
+		<div class="footer z-depth-1-half"><div class="next"><i class="material-icons">arrow_forward</i></div></div>
+	</div>
+
+
+	
 </div>
 
 
@@ -119,16 +134,47 @@
 
 <style type="text/css">
 .first-master{
+
 		top: 0; right: 0; bottom: 0; left: 0;
-		position:fixed;
+		position:absolute;
 
 }
 .left{
-	background-color:#303F9F;
+	
 	height:100%;
+	
+
+	
 
 }
 .right{
+	height:100%;
+	background-color: white;
+	top: 0; right: 0; bottom: 0; left: 0;
+	
+
+}
+.body{
+	height:90%;
+}
+
+
+.footer{
+	height:100px;
+	background-color: white;
+	top: 0; right: 0; bottom: 0; left: 0;
+
+}
+.title{
+	margin-top: 40px;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	font-size:90px;
+	
+
+
+}
+.next{
+	font-family: 'Yanone Kaffeesatz', sans-serif;
 
 }
 </style>
