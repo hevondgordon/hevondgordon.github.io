@@ -12,21 +12,16 @@
 
 
 <div class="first-master row">
+<div class="div-array">
+<div class="col l12 s12 m12 content-home"><span class="title"> Hevon Gordon</span></div>
+<div class="col l12 s12 m12 content-first content"><span class="title"> Hevon Gordon</span></div>
+<div class="col l12 s12 m12 content-second content"><span class="title"> Hevon Gordon</span></div>
+<div class="col l12 s12 m12 content-third content"><span class="title"> Hevon Gordon</span></div>
+<div class="col l12 s12 m12 content-fourth content"><span class="title"> Hevon Gordon</span></div>
+</div>
 
-	<div class="col l5 m12 s12 left z-depth-1-half">
-	<center><div class="title">Hevon Gordon</div></center>
-	</div>
-
-
-
-
-	<div class="col l7 m12 s12 right ">
-		<div class='body z-depth-1-half'>body</div>
-		<div class="footer z-depth-1-half"><div class="next"><i class="material-icons">arrow_forward</i></div></div>
-	</div>
-
-
-	
+	<div class="next-arrow z-depth-one-half"><div class="center"><i class="material-icons">keyboard_arrow_right</i></div></div>
+	<div class="prev-arrow z-depth-one-half"><div class="center"><i class="material-icons">keyboard_arrow_left</i></div></div>
 </div>
 
 
@@ -72,7 +67,7 @@
 
 
 
-<a id="demo01" href="#animatedModal">DEMO01</a>
+<!-- <a id="demo01" href="#animatedModal">DEMO01</a> -->
 
     <!--DEMO01-->
     <div id="animatedModal">
@@ -125,58 +120,156 @@
 <script type="text/javascript" src="js/animatedModal.js"></script>
 <script>
   $("#demo01").animatedModal();
+
+var now=$('.content-home');
+var width=now.width();
+var widthSlide=width*2;
+var mainDivs=[];
+var counter=0;
+
+
+  $(document).ready(function(){
+
+			$(".content-home").fadeTo(2000, 0.2);		
+			$(".title").fadeTo(2000, 1);
+				setInterval(function(){
+				/* $(".next-arrow").effect( "bounce", {times:3,direction:'left'}, 900);*/
+			},5000);
+
+
+  });
+
+
+((now.hasClass('content-home')|| now.hasClass('content')) && (now.next().hasClass('content')||now.next().hasClass('content-home')));
+
+
+
+$('.next-arrow').click(function() {
+	
+	if($(now).hasClass('content-home')||$(now).hasClass('content')&& $(now).next().hasClass('content')){
+
+			$('.prev-arrow').fadeIn('fast');
+			$(now).fadeOut('slow'); 
+			now=$(now).next();
+			$(now).fadeIn('slow');
+		}
+		else{
+			console.log('this is the end');
+		}
+	
+	
+
+
+	
+	
+	
+
+});
+
+   $('.prev-arrow').click(function(){
+   	console.log(now);
+   			if($(now).hasClass('content-home')||$(now).hasClass('content')&& $(now).prev().hasClass('content')||$(now).prev().hasClass('content-home')){
+
+   				$(now).fadeOut('slow');
+		  	 	$($(now).prev()).fadeIn('slow');
+		  	 	now=$(now).prev();
+		  	 	if($(now).hasClass('content-home')){
+		  	 		$(this).hide();
+		  	 	}
+   			}
+   			else{
+   				console.log()
+   			}
+   			
+		   
+   		
+	   	
+   		
+   	});
+
+
+   
+
 </script>
 
-
-
-
-
-
 <style type="text/css">
+.content-home{
+	position: absolute;
+	background-image: url('img/image.jpg');
+	height:100%;
+	background-repeat: no-repeat;
+	
+	
+}
+.content{
+	position: absolute;
+	height:100%;
+	display: none;
+}
+
+.content-first{
+	background-color: yellow;
+}
+.content-second{
+	background-color: black;
+}
+.content-third{
+	background-color: green;
+}
+.content-fourth{
+	background-color: pink;
+}
+.center {
+ 
+  top: 0; left: 0; bottom: 0; right: 0;
+  margin-top: 13px;
+}
 .first-master{
 
-		top: 0; right: 0; bottom: 0; left: 0;
-		position:absolute;
-
-}
-.left{
-	
-	height:100%;
-	
-
-	
-
-}
-.right{
-	height:100%;
-	background-color: white;
 	top: 0; right: 0; bottom: 0; left: 0;
+	position:absolute;
 	
 
 }
-.body{
-	height:90%;
+.next-arrow{
+	position:relative;
+	height:50px;
+	width:50px;
+	border-radius: 50px;
+	background-color:pink;
+	float:right;
+	margin-right:20px;
+	margin-top:25em;
 }
 
-
-.footer{
-	height:100px;
-	background-color: white;
-	top: 0; right: 0; bottom: 0; left: 0;
-
+.next-arrow:hover{
+	background-color:red;
+	color:white;
+	cursor:pointer;
 }
+.prev-arrow{
+	position:relative;
+	height:50px;
+	width:50px;
+	border-radius: 50px;
+	background-color:pink;
+	float:left;
+	margin-left:20px;
+	margin-top:25em;
+	display: none;
+}
+.prev-arrow:hover{
+	background-color:red;
+	color:white;
+	cursor:pointer;
+}
+
 .title{
 	margin-top: 40px;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
 	font-size:90px;
 	
 
-
-}
-.next{
-	font-family: 'Yanone Kaffeesatz', sans-serif;
-
-}
 </style>
 </body>
 </html>
