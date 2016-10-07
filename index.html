@@ -12,13 +12,13 @@
 
 
 <div class="first-master row">
-<div class="div-array">
-<div class="col l12 s12 m12 content-home"><span class="title"> Hevon Gordon</span></div>
-<div class="col l12 s12 m12 content-first content"><span class="title"> Hevon Gordon</span></div>
-<div class="col l12 s12 m12 content-second content"><span class="title"> Hevon Gordon</span></div>
-<div class="col l12 s12 m12 content-third content"><span class="title"> Hevon Gordon</span></div>
-<div class="col l12 s12 m12 content-fourth content"><span class="title"> Hevon Gordon</span></div>
-</div>
+
+	<div class="col l12 s12 m12 content-home"><div class="title z-index-2"><center><div class="bottom-line"><span class="intro"></span><span class="cursor">|</span></div> </center></div></div>
+	<div class="col l12 s12 m12 content-first content"><span class="title"> Hevon Gordon</span></div>
+	<div class="col l12 s12 m12 content-second content"><span class="title"> Hevon Gordon</span></div>
+	<div class="col l12 s12 m12 content-third content"><span class="title"> Hevon Gordon</span></div>
+	<div class="col l12 s12 m12 content-fourth content end"><span class="title"> Hevon Gordon</span></div>
+
 
 	<div class="next-arrow z-depth-one-half"><div class="center"><i class="material-icons">keyboard_arrow_right</i></div></div>
 	<div class="prev-arrow z-depth-one-half"><div class="center"><i class="material-icons">keyboard_arrow_left</i></div></div>
@@ -118,23 +118,39 @@
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
 <script type="text/javascript" src="bower_components/materialize/dist/js/materialize.js"></script>
 <script type="text/javascript" src="js/animatedModal.js"></script>
+<script type="text/javascript" src="js/jquery.backstretch.min.js"></script>
+
+
+
+
 <script>
-  $("#demo01").animatedModal();
+$("#demo01").animatedModal();
+
 
 var now=$('.content-home');
 var width=now.width();
 var widthSlide=width*2;
 var mainDivs=[];
 var counter=0;
-
+var name='Hey! My name is Hevon!';
+var intervalTimer=0,stringBuilder="";
+console.log(name[1]);
 
   $(document).ready(function(){
+  			
 
-			$(".content-home").fadeTo(2000, 0.2);		
+			$(".content-home").fadeTo(2000, 0.7);		
 			$(".title").fadeTo(2000, 1);
 				setInterval(function(){
-				/* $(".next-arrow").effect( "bounce", {times:3,direction:'left'}, 900);*/
-			},5000);
+					if(stringBuilder.length==name.length){
+						return
+					}
+					stringBuilder+=name[intervalTimer];
+					intervalTimer++;
+					$('.intro').html(stringBuilder);
+
+				
+			},400);
 
 
   });
@@ -152,6 +168,11 @@ $('.next-arrow').click(function() {
 			$(now).fadeOut('slow'); 
 			now=$(now).next();
 			$(now).fadeIn('slow');
+			if($(now).hasClass('end')){
+				$(this).hide();
+			}
+				
+			
 		}
 		else{
 			console.log('this is the end');
@@ -176,6 +197,12 @@ $('.next-arrow').click(function() {
 		  	 	if($(now).hasClass('content-home')){
 		  	 		$(this).hide();
 		  	 	}
+
+		  	 	if($(now).hasClass('end')===false){
+					$('.next-arrow').show();
+			}
+
+
    			}
    			else{
    				console.log()
@@ -193,12 +220,23 @@ $('.next-arrow').click(function() {
 </script>
 
 <style type="text/css">
+
+}
+.first-master.row{
+	margin-bottom: 0px !important;
+}
 .content-home{
 	position: absolute;
-	background-image: url('img/image.jpg');
-	height:100%;
-	background-repeat: no-repeat;
+	/*background-image: url('img/image.jpg');*/
 	
+	height: 100%;
+  background: url(img/image.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+
 	
 }
 .content{
@@ -267,9 +305,42 @@ $('.next-arrow').click(function() {
 .title{
 	margin-top: 40px;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
-	font-size:90px;
+	font-size:5em;
+	color:white;
+	padding:5px;
+	
+}
 	
 
+
+
+.cursor{
+    animation:blink 1000ms infinite alternate;
+   
+}
+.bottom-line{
+ 	margin-top: 320px;
+	 border-bottom:2px solid white;
+	 width: 35%
+}
+@media screen and (min-width: 320px) and (max-width: 640px) {
+		.bottom-line{
+ 			margin-top: 320px;
+			 border-bottom:2px solid white;
+			 width: 90%
+}
+
+ 	
+}
+@keyframes blink {
+    from { opacity:1; }
+    to { opacity:0; }
+};
+
+
+
+
+  
 </style>
 </body>
 </html>
